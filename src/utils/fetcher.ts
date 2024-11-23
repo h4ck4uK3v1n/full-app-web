@@ -12,9 +12,9 @@ export const headers = {
 export async function fetcher<T, K, E, C>(props: FetcherProps<K>): Promise<T> {
     let data;
     try {
-        const { API_BASE_URL } = envs;
+        const { NEXT_PUBLIC_API_BASE_URL } = envs;
         const { method, url, body } = props;
-        const URL = `${API_BASE_URL}${url}`;
+        const URL = `${NEXT_PUBLIC_API_BASE_URL}${url}`;
         console.table({ URL, method, body });
 
         let res;

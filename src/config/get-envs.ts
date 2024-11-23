@@ -1,12 +1,12 @@
 import { z } from 'zod'
 
 interface IEnvs {
-    API_BASE_URL: string
+    NEXT_PUBLIC_API_BASE_URL: string
     PORT: string
 }
 
 const envSchema = z.object({
-    API_BASE_URL: z.string().default('http://app-express:3000/api'),
+    NEXT_PUBLIC_API_BASE_URL: z.string().default('http://localhost:3000'),
     PORT: z.string().default('3000')
 })
 
