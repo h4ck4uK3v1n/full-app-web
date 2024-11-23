@@ -6,7 +6,7 @@ interface IEnvs {
 }
 
 const envSchema = z.object({
-    NEXT_PUBLIC_API_BASE_URL: z.string(),
+    NEXT_PUBLIC_API_BASE_URL: z.string().default('http://localhost:3000'),
     PORT: z.string().default('3000')
 })
 
