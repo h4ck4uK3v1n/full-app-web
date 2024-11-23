@@ -14,5 +14,7 @@ export async function Volumes() {
             <div>Something went wrong</div>
         )
     }
+    console.table(data)
+    
     return <VolumeList volumeList={data} />
 }

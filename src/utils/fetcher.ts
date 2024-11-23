@@ -15,6 +15,8 @@ export async function fetcher<T, K, E, C>(props: FetcherProps<K>): Promise<T> {
         const { API_BASE_URL } = envs;
         const { method, url, body } = props;
         const URL = `${API_BASE_URL}${url}`;
+        console.table({ URL, method, body });
+
         let res;
         if (method === 'POST' || method === 'PUT') {
             res = await fetch(URL, {
@@ -28,6 +30,8 @@ export async function fetcher<T, K, E, C>(props: FetcherProps<K>): Promise<T> {
             })
         }
         const dataRes = await res.json() as C;
+
+        console.log('Data:', dataRes);
 
         if (res.ok) {
             data = {
