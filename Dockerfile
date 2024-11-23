@@ -1,28 +1,15 @@
 # Define base stage
-FROM node:20.18.0-alpine as base
+FROM node:20.18.0-alpine
 WORKDIR /app
-COPY yarn.lock package.json ./
-RUN yarn install
-COPY . .
 
-# Define test stage -:> running all tests 
-FROM base as test
-RUN yarn test
-
-# Define build stage -:> building the app
-FROM base as build
-RUN yarn build
-
-# Define production stage -:> running the app
-FROM base as prod
-COPY --from=base /app/package.json ./
-COPY --from=base /app/yarn.lock ./
+COPY package.json /app
+COPY yarn.lock /app
 
 RUN yarn install
+
+COPY . /app
+
 RUN yarn build
-
-COPY --from=build /app/.next ./.next
-
 
 
 EXPOSE $PORT
