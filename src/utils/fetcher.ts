@@ -12,9 +12,9 @@ export const headers = {
 export async function fetcher<T, K, E, C>(props: FetcherProps<K>): Promise<T> {
     let data;
     try {
-        const { NEXT_PUBLIC_API_BASE_URL } = envs;
+        const { API_BASE_URL } = envs;
         const { method, url, body } = props;
-        const URL = `${NEXT_PUBLIC_API_BASE_URL}${url}`;
+        const URL = `${API_BASE_URL}${url}`;
         let res;
         if (method === 'POST' || method === 'PUT') {
             res = await fetch(URL, {
