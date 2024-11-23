@@ -16,4 +16,5 @@ if (error) {
     throw new Error(`Env validation error: ${error.message}`)
 }
 
+console.log('Env:', data);
 export const envs = data as IEnvs;
